@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pendaftaran Ekstrakurikuler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Form Pendaftaran Ekstrakurikuler</h2>
+    <div id="success-message" class="success-message"></div>
+
+    <form id="registrationForm" novalidate>
+      <!-- Input Nama Lengkap -->
+      <div class="form-group">
+        <label for="fullName">Nama Lengkap</label>
+        <input type="text" id="fullName" placeholder="Masukkan nama lengkap">
+        <small class="error-text"></small>
+      </div>
+
+      <!-- Input Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="contoh@domain.com">
+        <small class="error-text"></small>
+      </div>
+
+      <!-- Input Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" placeholder="Minimal 8 karakter">
+          <button type="button" class="toggle-btn" onclick="togglePassword('password', this)">Lihat</button>
+        </div>
+        <small class="error-text"></small>
+      </div>
+
+      <!-- Input Konfirmasi Password -->
+      <div class="form-group">
+        <label for="confirmPassword">Konfirmasi Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="confirmPassword" placeholder="Ulangi password">
+          <button type="button" class="toggle-btn" onclick="togglePassword('confirmPassword', this)">Lihat</button>
+        </div>
+        <small class="error-text"></small>
+      </div>
+
+      <!-- Pilihan Ekstrakurikuler -->
+      <div class="form-group">
+        <label for="extracurricular">Pilihan Ekstrakurikuler</label>
+        <select id="extracurricular">
+          <option value="">-- Pilih Ekstrakurikuler --</option>
+          <option value="Paskibra">Paskibra</option>
+          <option value="Rebana">Rebana</option>
+          <option value="Bahasa Jepang">Bahasa Jepang</option>
+          <option value="Volly">Volly</option>
+          <option value="Rohis">Rohis</option>
+          <option value="Nari">Nari</option>
+          <option value="Padus">Padus</option>
+          <option value="Foster">Foster</option>
+          <option value="Jurnalis">Jurnalis</option>
+          <option value="Pramuka">Pramuka</option>
+          <option value="PMR">PMR</option>
+          <option value="Drum Band">Drum Band</option>
+          <option value="MTQ">MTQ</option>
+          <option value="Silat">Silat</option>
+          <option value="Futsal">Futsal</option>
+        </select>
+        <small class="error-text"></small>
+      </div>
+
+      <button type="submit">Daftar Sekarang</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
