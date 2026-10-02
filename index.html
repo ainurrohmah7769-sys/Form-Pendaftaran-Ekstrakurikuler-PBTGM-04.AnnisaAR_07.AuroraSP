@@ -3,76 +3,296 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pendaftaran Ekstrakurikuler</title>
+  <title>Pendaftaran & Informasi Ekstrakurikuler SMKN Tengaran</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div class="form-container">
-    <h2>Form Pendaftaran Ekstrakurikuler</h2>
-    <div id="success-message" class="success-message"></div>
 
-    <form id="registrationForm" novalidate>
-      <!-- Input Nama Lengkap -->
-      <div class="form-group">
-        <label for="fullName">Nama Lengkap</label>
-        <input type="text" id="fullName" placeholder="Masukkan nama lengkap">
-        <small class="error-text"></small>
-      </div>
+  <!-- Menu Navigasi Atas (Header) -->
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="#home" class="brand">
+        <i class="fa-solid fa-graduation-cap brand-icon"></i>
+        <span>RuangEkstraTengaran</span>
+      </a>
+      
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-      <!-- Input Email -->
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="contoh@domain.com">
-        <small class="error-text"></small>
-      </div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-item active"><i class="fa-solid fa-house"></i> Beranda</a>
+        <a href="#pendaftaran" class="nav-item"><i class="fa-solid fa-file-pen"></i> Form Pendaftaran</a>
+        <a href="#tentang-ekstra" class="nav-item"><i class="fa-solid fa-icons"></i> Tentang Ekstra</a>
+      </nav>
+    </div>
+  </header>
 
-      <!-- Input Password -->
-      <div class="form-group">
-        <label for="password">Password</label>
-        <div class="password-wrapper">
-          <input type="password" id="password" placeholder="Minimal 8 karakter">
-          <button type="button" class="toggle-btn" onclick="togglePassword('password', this)">Lihat</button>
+  <main>
+    <!-- Hero / Welcome Banner -->
+    <section class="hero-section" id="home">
+      <div class="hero-content">
+        <h1>Selamat Datang di Portal Ekstrakurikuler SMKN Tengaran</h1>
+        <p>Wadah buat kamu ngembangin minat, hobi, bakat, dan persahabatan seru selama di sekolah. Pilih ekstramu dan daftar sekarang!</p>
+        <div class="hero-btns">
+          <a href="#pendaftaran" class="btn-hero primary"><i class="fa-solid fa-user-plus"></i> Daftar Sekarang</a>
+          <a href="#tentang-ekstra" class="btn-hero secondary"><i class="fa-solid fa-compass"></i> Lihat 15 Ekstra</a>
         </div>
-        <small class="error-text"></small>
+      </div>
+    </section>
+
+    <!-- Section Form Pendaftaran (Kode Asli Kamu) -->
+    <section class="section-container" id="pendaftaran">
+      <!-- HALAMAN 1: Form Akun & Pilih Ekstra -->
+      <div class="form-container" id="page-1">
+        <h2>Form Pendaftaran Ekstra</h2>
+        <form id="registrationForm" novalidate>
+          <div class="form-group">
+            <label for="fullName">Nama Lengkap</label>
+            <input type="text" id="fullName" placeholder="Masukkan nama lengkap">
+            <small class="error-text"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="contoh@domain.com">
+            <small class="error-text"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="password" placeholder="Minimal 8 karakter">
+              <button type="button" class="toggle-btn" onclick="togglePassword('password', this)">Lihat</button>
+            </div>
+            <small class="error-text"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Konfirmasi Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="confirmPassword" placeholder="Ulangi password">
+              <button type="button" class="toggle-btn" onclick="togglePassword('confirmPassword', this)">Lihat</button>
+            </div>
+            <small class="error-text"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="extracurricular">Pilihan Ekstrakurikuler</label>
+            <select id="extracurricular">
+              <option value="">-- Pilih Ekstrakurikuler --</option>
+              <option value="Jurnalis">Jurnalis</option>
+              <option value="Paskibra">Paskibra</option>
+              <option value="Rebana">Rebana</option>
+              <option value="Bahasa Jepang">Bahasa Jepang</option>
+              <option value="Volly">Volly</option>
+              <option value="Rohis">Rohis</option>
+              <option value="Nari">Tari</option>
+              <option value="Padus">Padus</option>
+              <option value="Foster">Foster</option>
+              <option value="Pramuka">Pramuka</option>
+              <option value="PMR">PMR</option>
+              <option value="Drum Band">Drum Band</option>
+              <option value="MTQ">MTQ</option>
+              <option value="Silat">Silat</option>
+              <option value="Futsal">Futsal</option>
+            </select>
+            <small class="error-text"></small>
+          </div>
+
+          <button type="submit">Lanjut ke Form Ekstra</button>
+        </form>
       </div>
 
-      <!-- Input Konfirmasi Password -->
-      <div class="form-group">
-        <label for="confirmPassword">Konfirmasi Password</label>
-        <div class="password-wrapper">
-          <input type="password" id="confirmPassword" placeholder="Ulangi password">
-          <button type="button" class="toggle-btn" onclick="togglePassword('confirmPassword', this)">Lihat</button>
+      <!-- HALAMAN 2: Form Khusus Jurnalistik (Awalnya tersembunyi) -->
+      <div class="form-container hidden" id="page-2">
+        <h2>Form Pendaftaran Jurnalistik</h2>
+        <div id="jurnalistik-success-message" class="success-message"></div>
+
+        <form id="jurnalistikForm" novalidate>
+          <div class="form-group">
+            <label for="jurnalisFullName">Nama Lengkap</label>
+            <input type="text" id="jurnalisFullName" readonly>
+            <small class="error-text"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="jurnalisClass">Kelas</label>
+            <input type="text" id="jurnalisClass" placeholder="Contoh: X RPL 1">
+            <small class="error-text"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="jurnalisPhone">Nomor Telepon</label>
+            <input type="tel" id="jurnalisPhone" placeholder="Contoh: 081234567890">
+            <small class="error-text"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="jurnalisReason">Alasan Mengikuti Ekstra</label>
+            <textarea id="jurnalisReason" rows="4" placeholder="Tuliskan alasan kamu..."></textarea>
+            <small class="error-text"></small>
+          </div>
+
+          <button type="submit">Daftar Sekarang</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SECTION TENTANG EKSTRA (15 EKSTRA) -->
+    <section class="section-container ekstra-section" id="tentang-ekstra">
+      <div class="section-title">
+        <h2>Tentang Ekstrakurikuler</h2>
+        <p>Yuk kepoin 15 pilihan ekstrakurikuler keren di SMKN Tengaran! Gambar di atas, judul di tengah, dan infonya ada di bawah.</p>
+      </div>
+
+      <div class="ekstra-grid">
+
+        <!-- 1. Jurnalistik -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80" alt="Jurnalistik" onerror="this.src='https://placehold.co/600x400/3498db/ffffff?text=Jurnalistik'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-newspaper"></i> Jurnalistik</h3>
+          <p class="card-desc">Suka nulis, liputan berita sekolah, atau hobi fotografi & videografi? Di Jurnalistik kita belajar ngeliput event keren sekolah, bikin majalah/konten media sosial, dan asah keberanian wawancara orang banyak!</p>
         </div>
-        <small class="error-text"></small>
-      </div>
 
-      <!-- Pilihan Ekstrakurikuler -->
-      <div class="form-group">
-        <label for="extracurricular">Pilihan Ekstrakurikuler</label>
-        <select id="extracurricular">
-          <option value="">-- Pilih Ekstrakurikuler --</option>
-          <option value="Paskibra">Paskibra</option>
-          <option value="Rebana">Rebana</option>
-          <option value="Bahasa Jepang">Bahasa Jepang</option>
-          <option value="Volly">Volly</option>
-          <option value="Rohis">Rohis</option>
-          <option value="Nari">Nari</option>
-          <option value="Padus">Padus</option>
-          <option value="Foster">Foster</option>
-          <option value="Jurnalis">Jurnalis</option>
-          <option value="Pramuka">Pramuka</option>
-          <option value="PMR">PMR</option>
-          <option value="Drum Band">Drum Band</option>
-          <option value="MTQ">MTQ</option>
-          <option value="Silat">Silat</option>
-          <option value="Futsal">Futsal</option>
-        </select>
-        <small class="error-text"></small>
-      </div>
+        <!-- 2. Paskibra -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://2.bp.blogspot.com/-mvMwTZSQA2o/VObhFRK5LwI/AAAAAAAAACs/LsPz60c-W_4/s1600/DSC_0471.JPG" alt="Paskibra" onerror="this.src='https://placehold.co/600x400/e74c3c/ffffff?text=Paskibra'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-flag"></i> Paskibra</h3>
+          <p class="card-desc">Buat kamu yang mau tampil gagah, rapi, dan punya kedisiplinan tinggi. Di sini tempatnya melatih baris-berbaris, kekompakan tim, dan tentu aja kesempatan tampil jadi pengibar bendera di momen-momen spesial.</p>
+        </div>
 
-      <button type="submit">Daftar Sekarang</button>
-    </form>
-  </div>
+        <!-- 3. Rebana -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Rebana" onerror="this.src='https://placehold.co/600x400/2ecc71/ffffff?text=Rebana'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-drum"></i> Rebana</h3>
+          <p class="card-desc">Suka musik islami dan bersholawat? Ekstra Rebana memadukan ketukan irama terbang yang merdu dengan vokal yang adem. Tempat nongkrong positif sambil syiar dan latihan tampil di acara-acara sekolah!</p>
+        </div>
+
+        <!-- 4. Bahasa Jepang -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.pexels.com/photos/19743524/pexels-photo-19743524.jpeg" alt="Bahasa Jepang" onerror="this.src='https://placehold.co/600x400/9b59b6/ffffff?text=Bahasa+Jepang'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-torii-gate"></i> Bahasa Jepang</h3>
+          <p class="card-desc">Konnichiwa! Pengen paham anime tanpa subtitle, belajar percakapan Jepang sehari-hari, sampai kenal budaya Negeri Sakura? Di sini kita belajar dengan cara yang super santai, seru, dan gak bikin pusing!</p>
+        </div>
+
+        <!-- 5. Volly -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=600&q=80" alt="Volly" onerror="this.src='https://placehold.co/600x400/f1c40f/ffffff?text=Volly'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-volleyball"></i> Volly</h3>
+          <p class="card-desc">Olah fisik sambil seru-seruan bareng teman! Belajar passing atas-bawah, smash tajam, dan latihan kerjasama tim yang solid. Cocok banget buat kamu yang pengen makin tinggi dan bugar.</p>
+        </div>
+
+        <!-- 6. Rohis -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=600&q=80" alt="Rohis" onerror="this.src='https://placehold.co/600x400/16a085/ffffff?text=Rohis'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-mosque"></i> Rohis</h3>
+          <p class="card-text card-desc">Nggak cuma belajar ilmu keagamaan, di Rohis kita juga belajar organisasi, bikin event baksos, sharing kehidupan sekolah, dan nambah sahabat-sahabat yang saling menguatkan dalam kebaikan.</p>
+        </div>
+
+        <!-- 7. Tari -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80" alt="Tari" onerror="this.src='https://placehold.co/600x400/e84393/ffffff?text=Tari'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-person-dots-from-line"></i> Tari Tradisional & Kreasi</h3>
+          <p class="card-desc">Melestarikan budaya lewat tarian yang indah dan penuh semangat. Dari gerak tari tradisional khas Jawa sampai kreasi modern. Siap-siap sering diundang tampil mengisi pentas seni sekolah!</p>
+        </div>
+
+        <!-- 8. Paduan Suara (Padus) -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80" alt="Paduan Suara" onerror="this.src='https://placehold.co/600x400/8e44ad/ffffff?text=Paduan+Suara'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-music"></i> Paduan Suara (Padus)</h3>
+          <p class="card-desc">Suka menyanyi dan ingin mengolah vokal dengan harmoni sopran, alto, tenor, hingga bass? Padus adalah kunci megahnya lagu Indonesia Raya setiap upacara dan acara resmi sekolah!</p>
+        </div>
+
+        <!-- 9. Fosster -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Foster" onerror="this.src='https://placehold.co/600x400/2980b9/ffffff?text=Foster'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-handshake-angle"></i> Forum safety riding</h3>
+          <p class="card-desc">Mempelajari pentingnya keselamatan dan ketertiban dalam berkendara.</p>
+        </div>
+
+        <!-- 10. Pramuka -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.pexels.com/photos/6638645/pexels-photo-6638645.jpeg" alt="Pramuka" onerror="this.src='https://placehold.co/600x400/d35400/ffffff?text=Pramuka'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-campground"></i> Pramuka</h3>
+          <p class="card-desc">Salam Pramuka! Ekstra wajib yang melatih kemandirian, survival, kemah seru di alam terbuka, tali temali, dan rasa kebersamaan yang gak bakal kamu temuin di tempat lain.</p>
+        </div>
+
+        <!-- 11. PMR -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="PMR" onerror="this.src='https://placehold.co/600x400/c0392b/ffffff?text=PMR'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-kit-medical"></i> PMR (Palang Merah Remaja)</h3>
+          <p class="card-desc">Jiwa penolongmu tinggi? Di PMR kita belajar dasar pertolongan pertama, penanganan cedera ringan, kesehatan lingkungan, dan siap jadi tim medis andalan saat acara-acara sekolah.</p>
+        </div>
+
+        <!-- 12. Drum Band -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Drum Band" onerror="this.src='https://placehold.co/600x400/f39c12/ffffff?text=Drum+Band'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-drum-steelpan"></i> Drum Band</h3>
+          <p class="card-desc">Kombinasi atraktif antara ketukan snare drum, bas, brass, dan aksi color guard yang megah. Buat kamu yang pengen tampil heboh dan memukau di pawai atau karnaval umum!</p>
+        </div>
+
+        <!-- 13. MTQ -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.pexels.com/photos/34676894/pexels-photo-34676894.jpeg" alt="MTQ" onerror="this.src='https://placehold.co/600x400/27ae60/ffffff?text=MTQ'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-book-quran"></i> MTQ (Musabaqah Tilawatil Qur'an)</h3>
+          <p class="card-desc">Mengasah keindahan seni membaca Al-Qur'an dengan irama naghom yang syahdu dan tajwid yang tepat. Dilatih langsung untuk persiapan lomba-lomba tingkat kabupaten hingga provinsi!</p>
+        </div>
+
+        <!-- 14. Silat -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=600&q=80" alt="Pencak Silat" onerror="this.src='https://placehold.co/600x400/7f8c8d/ffffff?text=Silat'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-hand-fist"></i> Pencak Silat</h3>
+          <p class="card-desc">Seni bela diri warisan leluhur bangsa! Di sini kita belajar jurus-jurus pertahanan diri, menggembleng fisik serta mental, sekaligus melatih nilai kesantunan dan olah pernapasan.</p>
+        </div>
+
+        <!-- 15. Futsal -->
+        <div class="ekstra-card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80" alt="Futsal" onerror="this.src='https://placehold.co/600x400/27ae60/ffffff?text=Futsal'">
+          </div>
+          <h3 class="card-title"><i class="fa-solid fa-futbol"></i> Futsal</h3>
+          <p class="card-desc">Ekstra terfavorit yang nggak pernah sepi! Mengasah skill gocekan, akurasi umpan, stamina, serta strategi tim. Siap latihan rutin dan tanding sparring antar sekolah!</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <p>&copy; 2026 SMKN Tengaran - Annisa A.R (XI RPL 3). All Rights Reserved.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
