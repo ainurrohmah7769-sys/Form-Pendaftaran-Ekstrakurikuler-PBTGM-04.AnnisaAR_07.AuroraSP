@@ -1,12 +1,34 @@
-const form = document.getElementById('registrationForm');
+// Elemen Halaman
+const page1 = document.getElementById('page-1');
+const page2 = document.getElementById('page-2');
+
+// Elemen Form 1
+const form1 = document.getElementById('registrationForm');
 const fullName = document.getElementById('fullName');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirmPassword');
 const extracurricular = document.getElementById('extracurricular');
-const successMessage = document.getElementById('success-message');
 
-// Menampilkan indikator eror (border merah & pesan)
+// Elemen Form 2
+const form2 = document.getElementById('jurnalistikForm');
+const jurnalisFullName = document.getElementById('jurnalisFullName');
+const jurnalisClass = document.getElementById('jurnalisClass');
+const jurnalisPhone = document.getElementById('jurnalisPhone');
+const jurnalisReason = document.getElementById('jurnalisReason');
+const successMessage = document.getElementById('jurnalistik-success-message');
+
+// Navigation Toggle Mobile
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+}
+
+// Helper Tampilan Error/Success (Kode Asli Kamu)
 const showError = (input, message) => {
   const formGroup = input.parentElement.classList.contains('password-wrapper') 
     ? input.parentElement.parentElement 
@@ -18,7 +40,6 @@ const showError = (input, message) => {
   formGroup.classList.add('show-error');
 };
 
-// Menampilkan indikator sukses (border hijau)
 const showSuccess = (input) => {
   const formGroup = input.parentElement.classList.contains('password-wrapper') 
     ? input.parentElement.parentElement 
@@ -28,22 +49,20 @@ const showSuccess = (input) => {
   formGroup.classList.remove('show-error');
 };
 
-// Validasi Nama Lengkap
+// Validasi Form 1 (Kode Asli Kamu)
 const checkFullName = () => {
   const val = fullName.value.trim();
   if (val === '') {
     showError(fullName, 'Nama lengkap tidak boleh kosong');
     return false;
   } else if (val.length < 3) {
-    showError(fullName, 'Nama minimal terdiri dari 3 karakter');
+    showError(fullName, 'Nama minimal 3 karakter');
     return false;
-  } else {
-    showSuccess(fullName);
-    return true;
   }
+  showSuccess(fullName);
+  return true;
 };
 
-// Validasi Email dengan Regular Expression
 const checkEmail = () => {
   const val = email.value.trim();
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,13 +72,11 @@ const checkEmail = () => {
   } else if (!emailPattern.test(val)) {
     showError(email, 'Format email tidak valid');
     return false;
-  } else {
-    showSuccess(email);
-    return true;
   }
+  showSuccess(email);
+  return true;
 };
 
-// Validasi Password
 const checkPassword = () => {
   const val = password.value.trim();
   if (val === '') {
@@ -68,41 +85,69 @@ const checkPassword = () => {
   } else if (val.length < 8) {
     showError(password, 'Password minimal 8 karakter');
     return false;
-  } else {
-    showSuccess(password);
-    return true;
   }
+  showSuccess(password);
+  return true;
 };
 
-// Validasi Konfirmasi Password
 const checkConfirmPassword = () => {
-  const passwordVal = password.value.trim();
-  const confirmVal = confirmPassword.value.trim();
-
-  if (confirmVal === '') {
+  if (confirmPassword.value.trim() === '') {
     showError(confirmPassword, 'Konfirmasi password tidak boleh kosong');
     return false;
-  } else if (confirmVal !== passwordVal) {
+  } else if (confirmPassword.value.trim() !== password.value.trim()) {
     showError(confirmPassword, 'Password tidak cocok');
     return false;
-  } else {
-    showSuccess(confirmPassword);
-    return true;
   }
+  showSuccess(confirmPassword);
+  return true;
 };
 
-// Validasi Ekstrakurikuler
 const checkExtracurricular = () => {
   if (extracurricular.value === '') {
     showError(extracurricular, 'Silakan pilih ekstrakurikuler');
     return false;
-  } else {
-    showSuccess(extracurricular);
-    return true;
   }
+  showSuccess(extracurricular);
+  return true;
 };
 
-// Function Toggle Password (Show/Hide)
+// Validasi Form 2 (Jurnalistik) (Kode Asli Kamu)
+const checkJurnalisClass = () => {
+  if (jurnalisClass.value.trim() === '') {
+    showError(jurnalisClass, 'Kelas tidak boleh kosong');
+    return false;
+  }
+  showSuccess(jurnalisClass);
+  return true;
+};
+
+const checkJurnalisPhone = () => {
+  const val = jurnalisPhone.value.trim();
+  const phonePattern = /^[0-9]{10,14}$/;
+  if (val === '') {
+    showError(jurnalisPhone, 'Nomor telepon tidak boleh kosong');
+    return false;
+  } else if (!phonePattern.test(val)) {
+    showError(jurnalisPhone, 'Nomor telepon harus angka (10-14 digit)');
+    return false;
+  }
+  showSuccess(jurnalisPhone);
+  return true;
+};
+
+const checkJurnalisReason = () => {
+  const val = jurnalisReason.value.trim();
+  if (val === '') {
+    showError(jurnalisReason, 'Alasan tidak boleh kosong');
+    return false;
+  } else if (val.length < 10) {
+    showError(jurnalisReason, 'Alasan minimal 10 karakter');
+    return false;
+  }
+  showSuccess(jurnalisReason);
+  return true;
+};
+
 function togglePassword(inputId, btn) {
   const inputField = document.getElementById(inputId);
   if (inputField.type === 'password') {
@@ -114,39 +159,48 @@ function togglePassword(inputId, btn) {
   }
 }
 
-// Event Listener Validasi Real-time
+// Event Listeners Real-time (Kode Asli Kamu)
 fullName.addEventListener('input', checkFullName);
 email.addEventListener('input', checkEmail);
 password.addEventListener('input', checkPassword);
 confirmPassword.addEventListener('input', checkConfirmPassword);
 extracurricular.addEventListener('change', checkExtracurricular);
 
-// Event Listener Submit Form
-form.addEventListener('submit', (e) => {
-  // Mencegah reload halaman
+jurnalisClass.addEventListener('input', checkJurnalisClass);
+jurnalisPhone.addEventListener('input', checkJurnalisPhone);
+jurnalisReason.addEventListener('input', checkJurnalisReason);
+
+// Submit Halaman 1 -> Pindah ke Halaman 2 (Kode Asli Kamu)
+form1.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const isFullNameValid = checkFullName();
-  const isEmailValid = checkEmail();
-  const isPasswordValid = checkPassword();
-  const isConfirmPasswordValid = checkConfirmPassword();
-  const isExtraValid = checkExtracurricular();
+  const isForm1Valid = checkFullName() && checkEmail() && checkPassword() && checkConfirmPassword() && checkExtracurricular();
 
-  const isFormValid = isFullNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid && isExtraValid;
+  if (isForm1Valid) {
+    if (extracurricular.value === 'Jurnalis') {
+      // Sembunyikan Halaman 1 & Tampilkan Halaman 2
+      page1.classList.add('hidden');
+      page2.classList.remove('hidden');
 
-  // Jika semua inputan valid
-  if (isFormValid) {
-    successMessage.innerText = 'Pendaftaran Berhasil!';
+      // Pindahkan nama dari Form 1 ke Form 2
+      jurnalisFullName.value = fullName.value;
+      showSuccess(jurnalisFullName);
+    } else {
+      alert(`Pendaftaran untuk ${extracurricular.value} belum dibuka.`);
+    }
+  }
+});
+
+// Submit Halaman 2 (Selesai Pendaftaran) (Kode Asli Kamu)
+form2.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const isForm2Valid = checkJurnalisClass() && checkJurnalisPhone() && checkJurnalisReason();
+
+  if (isForm2Valid) {
+    successMessage.innerText = 'Pendaftaran Jurnalistik Berhasil!';
     successMessage.style.display = 'block';
-    alert('Pendaftaran Berhasil!');
-    
-    // Reset form setelah berhasil
-    form.reset();
-
-    // Hapus border hijau setelah reset
-    [fullName, email, password, confirmPassword, extracurricular].forEach(input => {
-      input.classList.remove('success');
-    });
+    alert('Selamat! Pendaftaran Ekstrakurikuler Jurnalistik Berhasil!');
   } else {
     successMessage.style.display = 'none';
   }
